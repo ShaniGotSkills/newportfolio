@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selected Work — Full-Stack Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --block:#F4F2EC;
+    --ink:#17191D;
+    --muted:#6C7078;
+    --rule:#E5E2DA;
+    --accent:#1B3F8B;
+    --live:#1E7A5F;
+    --maxw:940px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---------- header ---------- */
+  .masthead{padding:72px 0 40px;}
+  .eyebrow{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 22px;
+  }
+  h1{
+    font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;
+    font-weight:700;font-size:clamp(2.1rem,5.2vw,3.15rem);
+    line-height:1.04;letter-spacing:-.025em;margin:0 0 20px;max-width:19ch;
+  }
+  .lede{font-size:1.12rem;line-height:1.62;max-width:60ch;margin:0 0 26px;color:#2A2D33;}
+  .contact{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:12.5px;color:var(--muted);letter-spacing:.01em;margin:0;
+  }
+  .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(27,63,139,.28);}
+  .contact a:hover{border-bottom-color:var(--accent);}
+
+  /* ---------- filters ---------- */
+  .filters{
+    display:flex;flex-wrap:wrap;gap:8px;
+    padding:26px 0 4px;border-top:1px solid var(--rule);
+  }
+  .chip{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    padding:7px 13px;border:1px solid var(--rule);border-radius:999px;
+    background:transparent;color:var(--muted);cursor:pointer;
+    transition:background .15s ease,color .15s ease,border-color .15s ease;
+  }
+  .chip:hover{border-color:#C9C5BA;color:var(--ink);}
+  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+  .chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  /* ---------- sections ---------- */
+  .group{padding:46px 0 0;}
+  .group[hidden]{display:none;}
+  .group-label{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 20px;padding-bottom:12px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* ---------- project ---------- */
+  .project{
+    background:var(--block);border-radius:7px;
+    padding:26px 28px;margin-bottom:12px;
+  }
+  .project[hidden]{display:none;}
+  .project-head{
+    display:flex;flex-wrap:wrap;align-items:baseline;
+    gap:10px 14px;margin-bottom:11px;
+  }
+  .project-name{
+    font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;
+    font-weight:600;font-size:1.3rem;letter-spacing:-.015em;margin:0;
+  }
+  .project-link{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:12px;color:var(--accent);text-decoration:none;
+    border-bottom:1px solid rgba(27,63,139,.25);
+  }
+  .project-link:hover{border-bottom-color:var(--accent);}
+  .status{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--live);margin-left:auto;white-space:nowrap;
+  }
+  .status::before{
+    content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+    background:var(--live);margin-right:6px;vertical-align:middle;
+  }
+  .project p{margin:0 0 16px;max-width:68ch;color:#2A2D33;}
+  .spec{
+    display:grid;grid-template-columns:76px 1fr;gap:5px 14px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11.5px;line-height:1.5;padding-top:14px;
+    border-top:1px solid rgba(0,0,0,.07);
+  }
+  .spec dt{color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-size:10px;padding-top:1px;}
+  .spec dd{margin:0;color:#3A3E45;}
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:56px;padding:26px 0 70px;border-top:1px solid var(--rule);
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:11.5px;color:var(--muted);letter-spacing:.02em;
+  }
+
+  @media (max-width:620px){
+    .masthead{padding:48px 0 30px;}
+    .project{padding:22px 20px;}
+    .status{margin-left:0;width:100%;}
+    .spec{grid-template-columns:1fr;gap:2px;}
+    .spec dt{padding-top:8px;}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .group{animation:rise .5s ease both;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+
+  @media print{
+    body{background:#fff;font-size:11pt;}
+    .filters{display:none;}
+    .project{background:#fff;border:1px solid #ddd;break-inside:avoid;page-break-inside:avoid;}
+    .group{padding-top:24px;}
+    .masthead{padding:0 0 20px;}
+    a{color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Selected work</p>
+    <h1>Systems that businesses actually run on.</h1>
+    <p class="lede">Freelance full-stack developer. I build booking platforms, client portals, storefronts and the tools behind them — and I take over projects that were built too fast to hold up. Every project below was built and shipped by me personally, from data model to deployment.</p>
+    <p class="contact"><a href="https://www.upwork.com/freelancers/zeeshankhan424" target="_blank" rel="noopener">Upwork profile</a> &nbsp;·&nbsp; UTC+5 &nbsp;·&nbsp; Available for new work</p>
+  </header>
+
+  <nav class="filters" aria-label="Filter projects by type">
+    <button class="chip" data-filter="all" aria-pressed="true">All work</button>
+    <button class="chip" data-filter="platform" aria-pressed="false">Platforms &amp; portals</button>
+    <button class="chip" data-filter="ecom" aria-pressed="false">E-commerce</button>
+    <button class="chip" data-filter="wordpress" aria-pressed="false">WordPress</button>
+    <button class="chip" data-filter="tools" aria-pressed="false">Interactive tools</button>
+    <button class="chip" data-filter="rescue" aria-pressed="false">Codebase rescue</button>
+  </nav>
+
+  <!-- ============ PLATFORMS ============ -->
+  <section class="group" data-group="platform">
+    <h2 class="group-label">Platforms &amp; web applications</h2>
+
+    <article class="project" data-tags="platform">
+      <div class="project-head">
+        <h3 class="project-name">OneRideTho</h3>
+        <a class="project-link" href="https://www.oneridetho.com" target="_blank" rel="noopener">oneridetho.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A ride-hailing platform operating in the Bahamas. Passengers book with a live fare preview; drivers work from a separate application; a dispatch layer coordinates both in real time. Mobile apps published in the App Store and Google Play.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Sole developer — data model, backend, both front ends, deployment</dd>
+        <dt>Built</dt><dd>Real-time availability · fare calculation · driver dispatch · payments · two user-facing apps over one system</dd>
+        <dt>Stack</dt><dd>Next.js · React · TypeScript · Postgres</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="platform rescue">
+      <div class="project-head">
+        <h3 class="project-name">MVAS</h3>
+        <a class="project-link" href="https://mvas.cloud" target="_blank" rel="noopener">mvas.cloud</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A multi-role management platform originally built for a single company. I took the codebase over and rebuilt it as a multi-tenant system serving agencies, traffic providers and administrators — each role seeing only its own data, enforced at the database rather than in the interface.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Inherited an existing codebase and restructured it</dd>
+        <dt>Built</dt><dd>Multi-tenancy · role-based permissions · separate dashboards per account type</dd>
+        <dt>Stack</dt><dd>PHP · Laravel · MySQL</dd>
+        <dt>Demo</dt><dd>Username <strong>1</strong> · Password <strong>112233</strong></dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="platform rescue">
+      <div class="project-head">
+        <h3 class="project-name">Clean Freaks</h3>
+        <a class="project-link" href="https://clean-freaks-app.vercel.app" target="_blank" rel="noopener">clean-freaks-app.vercel.app</a>
+        <span class="status">In production</span>
+      </div>
+      <p>Business management for a commercial cleaning company — invoicing, payables, client balances and crew scheduling. It arrived half-built and already in daily use, with figures quietly disagreeing between screens: nothing crashed, the numbers were simply wrong. I traced the cause, then built automated test coverage around every calculation so no money-handling code can ship untested.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Took over an unfinished codebase and carried it to production</dd>
+        <dt>Built</dt><dd>Invoicing &amp; payables · scheduling · client accounts · full test suite across financial logic</dd>
+        <dt>Stack</dt><dd>React · TypeScript · Supabase (Postgres, row-level security) · Vitest</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="platform ecom">
+      <div class="project-head">
+        <h3 class="project-name">Ziny</h3>
+        <a class="project-link" href="https://ziny.io" target="_blank" rel="noopener">ziny.io</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A subscription SaaS product: marketing site plus a customer dashboard covering plans, usage allowances, account balances, top-ups and invoice history. Live inventory is pulled from an upstream provider's API and presented as purchasable options.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Sole developer</dd>
+        <dt>Built</dt><dd>Subscription billing · usage metering · customer dashboard · third-party API integration</dd>
+        <dt>Stack</dt><dd>Stripe · Postgres</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ============ ECOMMERCE ============ -->
+  <section class="group" data-group="ecom">
+    <h2 class="group-label">E-commerce</h2>
+
+    <article class="project" data-tags="ecom">
+      <div class="project-head">
+        <h3 class="project-name">The Pink Desert</h3>
+        <a class="project-link" href="https://www.thepinkdesert.com" target="_blank" rel="noopener">thepinkdesert.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A large-catalogue Shopify store with a deep collection structure, a wholesale channel, retail point-of-sale and international markets. Email and SMS marketing run through Klaviyo.</p>
+      <dl class="spec">
+        <dt>Built</dt><dd>Catalogue architecture · collection filtering · wholesale ordering · Shopify POS · multi-market setup</dd>
+        <dt>Stack</dt><dd>Shopify · Liquid · Klaviyo</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="ecom">
+      <div class="project-head">
+        <h3 class="project-name">HalfTee</h3>
+        <a class="project-link" href="https://halftee.com" target="_blank" rel="noopener">halftee.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>An apparel brand running subscriptions, product bundles and a wholesale channel alongside standard retail, with customer reviews and a store locator for stockists.</p>
+      <dl class="spec">
+        <dt>Built</dt><dd>Subscriptions · bundles &amp; quantity offers · wholesale · reviews · store locator</dd>
+        <dt>Stack</dt><dd>Shopify · Liquid</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="ecom">
+      <div class="project-head">
+        <h3 class="project-name">Hairveda</h3>
+        <a class="project-link" href="https://www.hairveda.co.uk" target="_blank" rel="noopener">hairveda.co.uk</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A UK health and beauty store selling on subscription as well as one-off purchase, with a customer loyalty programme and referral rewards.</p>
+      <dl class="spec">
+        <dt>Built</dt><dd>Subscription purchasing · loyalty programme · referrals · mobile-first storefront</dd>
+        <dt>Stack</dt><dd>Shopify · Liquid</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ============ WORDPRESS ============ -->
+  <section class="group" data-group="wordpress">
+    <h2 class="group-label">WordPress &amp; content sites</h2>
+
+    <article class="project" data-tags="wordpress">
+      <div class="project-head">
+        <h3 class="project-name">Tyler Heating &amp; Air</h3>
+        <a class="project-link" href="https://tylerheating.com" target="_blank" rel="noopener">tylerheating.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>An HVAC company site built on a custom theme, structured for local search: a dedicated page for every service and every service area, connected to the company's Google Business Profile and customer reviews.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Custom theme, no page builder</dd>
+        <dt>Built</dt><dd>Per-service and per-location page architecture · local SEO structure · reviews · performance tuning</dd>
+        <dt>Stack</dt><dd>WordPress · PHP</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="wordpress">
+      <div class="project-head">
+        <h3 class="project-name">Lightpost Studios</h3>
+        <a class="project-link" href="https://lightpoststudios.com" target="_blank" rel="noopener">lightpoststudios.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>An award-winning video production studio's site. Built around heavy video and photography without sacrificing load speed — media hosted externally and loaded on demand rather than shipped with the page.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Custom theme, no page builder</dd>
+        <dt>Built</dt><dd>Media-led layouts · project galleries · video delivery · team-editable content</dd>
+        <dt>Stack</dt><dd>WordPress · PHP</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="wordpress">
+      <div class="project-head">
+        <h3 class="project-name">Cassandra Tyler Films</h3>
+        <a class="project-link" href="https://cassandratylerfilms.com" target="_blank" rel="noopener">cassandratylerfilms.com</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A director's portfolio site: a project index leading into individual film pages, with the work presented at full scale and the client able to add new projects without a developer.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Custom theme, no page builder</dd>
+        <dt>Built</dt><dd>Project index &amp; detail templates · video-first presentation · client-managed content</dd>
+        <dt>Stack</dt><dd>WordPress · PHP</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="wordpress">
+      <div class="project-head">
+        <h3 class="project-name">Raise Your Voice</h3>
+        <a class="project-link" href="https://www.raiseyourvoicecbo.org" target="_blank" rel="noopener">raiseyourvoicecbo.org</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A youth-led community organisation in Kenya. The site carries donations, programme information, events, an image gallery and a rolling publication of opportunities for the community it serves.</p>
+      <dl class="spec">
+        <dt>Built</dt><dd>Donation flow · events · programme pages · gallery · editorial publishing</dd>
+        <dt>Stack</dt><dd>Custom build · PHP</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="wordpress">
+      <div class="project-head">
+        <h3 class="project-name">Starshine Cleaning</h3>
+        <a class="project-link" href="https://starshinecleaner.co.uk" target="_blank" rel="noopener">starshinecleaner.co.uk</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A UK cleaning company's website — service pages, quote enquiries and coverage areas, handed over so the owner manages content and pricing without needing a developer.</p>
+      <dl class="spec">
+        <dt>Built</dt><dd>Service pages · enquiry forms · owner-managed content</dd>
+        <dt>Stack</dt><dd>WordPress</dd>
+      </dl>
+    </article>
+  </section>
+
+  <!-- ============ TOOLS ============ -->
+  <section class="group" data-group="tools">
+    <h2 class="group-label">Interactive tools &amp; calculators</h2>
+
+    <article class="project" data-tags="tools">
+      <div class="project-head">
+        <h3 class="project-name">CPI Rent Increase Calculator</h3>
+        <a class="project-link" href="https://www.thecommercialguys.com.au/cpi-calculator/" target="_blank" rel="noopener">thecommercialguys.com.au</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A calculator built into a commercial real estate firm's website. It works out lease rent increases from official Australian Bureau of Statistics index data across every capital city, and produces a formatted PDF the agent can attach to lease documents — generated in the browser, with no server involved. Maintained each quarter as new index figures are published.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Sole developer · ongoing maintenance since launch</dd>
+        <dt>Built</dt><dd>Official index data integration · multi-city calculation · client-side PDF generation</dd>
+        <dt>Stack</dt><dd>WordPress · JavaScript</dd>
+      </dl>
+    </article>
+
+    <article class="project" data-tags="tools rescue">
+      <div class="project-head">
+        <h3 class="project-name">My Immune Age</h3>
+        <a class="project-link" href="https://myimmuneage.life" target="_blank" rel="noopener">myimmuneage.life</a>
+        <span class="status">Live</span>
+      </div>
+      <p>A multi-step health assessment that scores a set of answers and returns a segmented result rather than a single number. It came to me generated by an AI tool, with a broken backend and a very long list of dependencies; I cut it back to the packages doing real work, stabilised it, and redesigned the interface.</p>
+      <dl class="spec">
+        <dt>Role</dt><dd>Rebuilt and stabilised an existing AI-generated codebase</dd>
+        <dt>Built</dt><dd>Scoring logic · multi-step flow · results presentation · dependency and backend cleanup</dd>
+        <dt>Stack</dt><dd>React · TypeScript</dd>
+      </dl>
+    </article>
+  </section>
+
+  <footer>
+    Every project listed is live and can be visited. Walkthroughs, code review and references available on request.<br>
+    upwork.com/freelancers/zeeshankhan424
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var projects = Array.prototype.slice.call(document.querySelectorAll('.project'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.group'));
+
+  function apply(filter){
+    projects.forEach(function(p){
+      var tags = (p.getAttribute('data-tags') || '').split(/\s+/);
+      p.hidden = !(filter === 'all' || tags.indexOf(filter) !== -1);
+    });
+    groups.forEach(function(g){
+      var visible = g.querySelectorAll('.project:not([hidden])').length;
+      g.hidden = visible === 0;
+    });
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c === chip)); });
+      apply(chip.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
